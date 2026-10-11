@@ -6,7 +6,7 @@ An AI-powered network operations assistant that uses Zabbix monitoring data and 
 
 This project aims to automate and streamline network troubleshooting by combining AI agents, network monitoring, and Cisco device diagnostics.
 
-The agent retrieves network problem information from Zabbix, analyzes the reported issues, and executes relevant diagnostic commands on Cisco devices via SSH. Based on the collected information, it generates a natural-language summary of the findings and potential causes in English or Japanese.
+The agent retrieves network problem information from Zabbix, analyzes the reported issues, and executes relevant diagnostic commands on Cisco devices via SSH. It generates a natural-language summary of the findings and potential causes, with the response language depending on the user's inquiry.
 
 ## Features
 
@@ -48,7 +48,7 @@ Zabbix credentials: Configure the username and password used to access the Zabbi
 
 Google Gemini API key: Set your Google API key.
 
-Cisco device connection settings: Configure the device IP addresses and SSH credentials as required.
+Cisco device SSH credentials: Configure the SSH username and password required to access Cisco devices. Target device IP addresses are obtained from Zabbix monitoring data.
 
 Use environment variables for credentials and other sensitive information wherever possible.
 
