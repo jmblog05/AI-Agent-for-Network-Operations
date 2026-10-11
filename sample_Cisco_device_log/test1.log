@@ -1,0 +1,246 @@
+term len 0
+test1#show run
+Building configuration...
+
+Current configuration : 5089 bytes
+!
+! Last configuration change at 10:03:26 UTC Sun Oct 11 2026
+!
+version 17.18
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname test1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name test.com
+ip cef
+login on-success log
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2039809
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2039809
+ revocation-check none
+ rsakeypair TP-self-signed-2039809
+ hash sha512
+!
+!
+crypto pki certificate chain TP-self-signed-2039809
+ certificate self-signed 01
+  3082032A 30820212 A0030201 02020101 300D0609 2A864886 F70D0101 0D050030 
+  2E312C30 2A060355 04030C23 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32303339 38303930 1E170D32 36303830 32303932 3432325A 
+  170D3336 30383031 30393234 32325A30 2E312C30 2A060355 04030C23 494F532D 
+  53656C66 2D536967 6E65642D 43657274 69666963 6174652D 32303339 38303930 
+  82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02 82010100 
+  AD38E631 9E407BEF FB06EFD3 D0B3EDED 65017F88 86F3DFE2 6E841484 74D1569E 
+  A310996B A38C0F8A A1B7BBC5 EC9EF09F 7D2DBD19 55C4CD0D AD8C9DCD 2E7B6667 
+  E49D9DF1 CEB24BBC C946F7CA D1841F85 AF589A34 2058CD3E 0853FDE6 70D0D1D8 
+  649280F7 A095A5BC 81D0FBDA 8D132331 9D69DC39 5C79BFC0 5A1B74C1 CA2C26FC 
+  A6C86D83 73373B36 56DA751A 9E91FD61 89FBB5F6 8EE368D1 769F05DF 83340284 
+  EC6685AA 64675326 D289F8C9 2EC21518 1F6BBC5C CDC4678E 75175844 59997F19 
+  52928160 8C8E440F B1F89000 BB3572C5 FC47E82A 941B305D 613178A9 89459CB8 
+  F9FD217D D4D25CBF F16BBF44 D5AE97B3 0E9B1695 FBD642C0 54571777 A1DA16D5 
+  02030100 01A35330 51301D06 03551D0E 04160414 BE2AC39C D3D0AFDE 87FB9114 
+  09B74D5F 11919D17 301F0603 551D2304 18301680 14BE2AC3 9CD3D0AF DE87FB91 
+  1409B74D 5F11919D 17300F06 03551D13 0101FF04 05300301 01FF300D 06092A86 
+  4886F70D 01010D05 00038201 0100563F BF5ED99E 12E98510 606F928E FC8BD98E 
+  B63B2FF6 6C4F54AC 0A0B172C 56484623 B558D200 7A856F9C 5522EFE4 0A572CF9 
+  89411EE8 08CDC13F F32C6FB8 5878BABA CC7B3DE4 A5A6C356 754CD40B E43256A0 
+  E6D012E0 0C9F2EF2 45CFEE4D E93B204B B0AE7D96 2DDD7B63 EB7CC113 A18C4B62 
+  EE1BA077 9BE6572D 63E0F582 335BA480 AFDCDA97 214696B2 7399D6B8 17444DF1 
+  8B787F9C BBF31187 9AB2B51F DCF08F8E A5959968 3D2358B3 28C9F465 5720A9B8 
+  CA76E2B3 F3696CEE 8E1FEB9C 5A720CA8 3CFFA8F2 F6FA4DC6 12F6832E E9B12135 
+  9B298EEE 15EF513C 1553F45F BE74562A 5F0B7A3D 8B79A3ED 426EC1EB DD52EABE 
+  0B26372E 6C3961C0 50C3313B D71C
+  	quit
+!
+!
+memory free low-watermark processor 79866
+!
+!
+spanning-tree mode rapid-pvst
+!
+enable secret 9 $9$TpPT51W5ZdHRJU$HwQAL.YfZr2AaOWqt73z2uiDYc6.OqLI2AqHSepw/KI
+!
+username admin secret 9 $9$xCoOYu.WK3TF0U$Dzl/BoGwFX7tXhTz1hszIkhrBgCnbiYYO8Kiip39H2w
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.1.1 255.255.255.255
+ ip ospf network point-to-point
+!
+interface Ethernet0/0
+ ip address 172.16.1.254 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 10.0.0.1 255.255.255.0
+ ip ospf network point-to-point
+ bfd interval 300 min_rx 300 multiplier 3
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+interface Serial1/0
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+router ospf 1
+ router-id 10.0.0.1
+ redistribute connected
+ passive-interface default
+ no passive-interface Ethernet0/1
+ network 10.0.0.0 0.0.0.255 area 0
+ network 172.16.1.0 0.0.0.255 area 1
+!
+router bgp 64512
+ bgp router-id 10.0.1.1
+ bgp log-neighbor-changes
+ neighbor 10.0.1.2 remote-as 64513
+ neighbor 10.0.1.2 ebgp-multihop 2
+ neighbor 10.0.1.2 update-source Loopback0
+ neighbor 10.0.1.2 fall-over bfd
+!
+ip forward-protocol nd
+!
+!
+ip http server
+ip http secure-server
+ip ssh bulk-mode 131072
+no logging btrace
+!
+snmp-server group AuthPrivGroup v3 priv 
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps bgp state-changes all backward-trans limited updown-limited
+snmp-server enable traps bgp threshold prefix
+snmp-server host 172.16.1.3 version 3 priv testuser5  bgp ospf snmp
+!
+!
+control-plane
+!
+!
+!
+line con 0
+ activation-character 13
+ logging synchronous
+line aux 0
+ activation-character 13
+line vty 0 4
+ exec-timeout 0 0
+ activation-character 13
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
+
+test1#show ip int brief
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            172.16.1.254    YES NVRAM  up                    up      
+Ethernet0/1            10.0.0.1        YES NVRAM  up                    up      
+Ethernet0/2            unassigned      YES NVRAM  administratively down down    
+Ethernet0/3            unassigned      YES NVRAM  administratively down down    
+Serial1/0              unassigned      YES NVRAM  administratively down down    
+Serial1/1              unassigned      YES NVRAM  administratively down down    
+Serial1/2              unassigned      YES NVRAM  administratively down down    
+Serial1/3              unassigned      YES NVRAM  administratively down down    
+Loopback0              10.0.1.1        YES NVRAM  up                    up      
+test1#show ip ospf nei
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.0.0.2          0   FULL/  -        00:00:39    10.0.0.2        Ethernet0/1
+test1#show ip bgp summary
+BGP router identifier 10.0.1.1, local AS number 64512
+BGP table version is 2, main routing table version 2
+1 network entries using 248 bytes of memory
+1 path entries using 136 bytes of memory
+1/1 BGP path/bestpath attribute entries using 304 bytes of memory
+1 BGP AS-PATH entries using 24 bytes of memory
+0 BGP route-map cache entries using 0 bytes of memory
+0 BGP filter-list cache entries using 0 bytes of memory
+BGP using 712 total bytes of memory
+BGP activity 1/0 prefixes, 1/0 paths, scan interval 60 secs
+1 networks peaked at 10:04:31 Oct 11 2026 UTC (00:01:53.633 ago)
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+10.0.1.2        4        64513       7       6        2    0    0 00:02:45        1
+test1#
