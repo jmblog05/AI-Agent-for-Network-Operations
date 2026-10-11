@@ -22,12 +22,12 @@ The agent retrieves network problem information from Zabbix, analyzes the report
 The agent follows this workflow:
 
 1. Receive a network-related inquiry.
-2. Analyze the inquiry to determine whether sufficient information is available.
-3. Retrieve problem information from Zabbix when additional monitoring data is needed.
-4. Connect to relevant Cisco devices via SSH.
+2. Retrieve network problem information from Zabbix.
+3. Identify the relevant Cisco devices based on the monitoring data.
+4. Connect to the relevant devices via SSH.
 5. Execute diagnostic commands and collect device information.
 6. Determine whether further investigation is required.
-7. Generate a natural-language report with findings and potential causes.
+7. Generate a natural-language report summarizing the findings and potential causes.
 
 ## Technology Stack
 
