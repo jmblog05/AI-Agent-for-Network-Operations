@@ -502,7 +502,7 @@ Information retrieved from Cisco devices:
 
 {cli_output}
 
-Using only the information above, provide a clear explanation in English.
+Respond in the same language as the user's inquiry.
 
 Address the following points:
 
